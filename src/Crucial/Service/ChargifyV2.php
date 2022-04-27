@@ -27,6 +27,7 @@ use Crucial\Service\Chargify;
 use Crucial\Service\ChargifyV2\Call;
 use Crucial\Service\ChargifyV2\Direct;
 use Crucial\Service\ChargifyV2\Exception\BadMethodCallException;
+use GuzzleHttp\Utils;
 
 class ChargifyV2
 {
@@ -204,7 +205,7 @@ class ChargifyV2
         }
 
         if (!empty($rawData)) {
-            $options['body'] = Psr7\stream_for($rawData);
+            $options['body'] = Psr7\Utils::streamFor($rawData);
         }
 
         try {
