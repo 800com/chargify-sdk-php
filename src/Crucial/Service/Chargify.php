@@ -37,6 +37,7 @@ use Crucial\Service\Chargify\Stats;
 use Crucial\Service\Chargify\Subscription;
 use Crucial\Service\Chargify\Transaction;
 use Crucial\Service\Chargify\Webhook;
+use GuzzleHttp\Utils;
 
 class Chargify
 {
@@ -189,7 +190,7 @@ class Chargify
         }
 
         if (!empty($rawData)) {
-            $options['body'] = Psr7\stream_for($rawData);
+            $options['body'] = Psr7\Utils::streamFor($rawData);
         }
 
         try {
